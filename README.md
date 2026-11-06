@@ -48,3 +48,7 @@ npm run start
 * V_0_9_1: new
 
 ***
+### blog
+
+https://zenn.dev/knaka0209/scraps/33bbad05d2a9c7
+
