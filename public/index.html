@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ログイン + 2FA デモ</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:420px;margin:40px auto;padding:0 16px;color:#222}
+  section{border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:16px}
+  input,button{width:100%;padding:10px;margin:6px 0;box-sizing:border-box;font-size:16px}
+  button{cursor:pointer}
+  #msg{color:#c00;min-height:1.5em}
+  .hidden{display:none}
+  img{max-width:100%}
+</style>
+</head>
+<body>
+<h1>ログイン + 2FA</h1>
+<p id="msg"></p>
+
+<section id="authBox">
+  <h2>ログイン / 登録</h2>
+  <input id="email" type="email" placeholder="メールアドレス" autocomplete="username">
+  <input id="password" type="password" placeholder="パスワード (6文字以上)" autocomplete="current-password">
+  <button id="loginBtn">ログイン</button>
+  <button id="registerBtn">新規登録</button>
+</section>
+
+<section id="otpBox" class="hidden">
+  <h2>ワンタイムパスワード</h2>
+  <p>認証アプリの6桁コードを入力してください。</p>
+  <input id="otp" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code">
+  <button id="otpBtn">認証</button>
+</section>
+
+<section id="homeBox" class="hidden">
+  <h2>マイページ</h2>
+  <p>ログイン中: <b id="who"></b></p>
+  <p>2FA: <b id="twofa"></b></p>
+  <div id="setupArea" class="hidden">
+    <button id="setupBtn">2FA を設定する</button>
+    <div id="qrArea" class="hidden">
+      <p>Google Authenticator / Microsoft Authenticator / Authy などで QR を読み取り、表示された6桁コードを入力:</p>
+      <img id="qr" alt="QR">
+      <p>手入力用キー: <code id="secret"></code></p>
+      <input id="enableOtp" inputmode="numeric" maxlength="6" placeholder="6桁コード">
+      <button id="enableBtn">有効化</button>
+    </div>
+  </div>
+  <button id="logoutBtn">ログアウト</button>
+</section>
+
+<script src="/app.js"></script>
+</body>
+</html>
